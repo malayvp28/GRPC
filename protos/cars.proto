@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.userGrpc";
+option java_outer_classname = "GrpcUser";
+option objc_class_prefix = "RTG";
+
+
+package userGrpc;
+service User {
+    //POST
+    rpc AddUser (UserData) returns (UserData){}
+    
+    //PUT
+    rpc UpdateUser (UserData) returns (UserData){}
+
+    //GET
+    rpc GetUser (UserID) returns (UserData){}
+
+    //DELETE
+    rpc RemoveUser (UserID) returns (UserData){}
+}
+
+message UserData{
+    int64 id = 1; //primarykey of user
+    string name = 2; //name of the user
+    string price = 3;
+   
+}
+
+message UserID{
+    int64 id = 1;
+}
